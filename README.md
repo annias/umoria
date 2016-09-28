@@ -1,22 +1,53 @@
-# UMoria
-Official source code of the roguelike UMoria.
+# Umoria - a roguelike computer game
 
-## Introduction
-This repository contains the official source code of the roguelike UMoria (see http://en.wikipedia.org/wiki/Moria_%28video_game%29 and http://www.roguebasin.com/index.php?title=Moria for more info) as retrieved from Beej's Moria Page (http://beej.us/moria/).
+_The Dungeons of Moria_ is a single player dungeon simulation originally
+written by Robert Alan Koeneke and first released in 1985.
 
-I have checked in each version in order and tagged it, so that those interested in the historical development of the source will be able to explore it using Git/Github tools.
+The original version was written in VMS Pascal, before being ported to the
+C language, and released as Umoria in 1988.
 
-I have no plans to host official binaries here at this time, but am open to it if people are interested.
+Over the years Moria has been ported to many platforms with code contributions
+from 26 different people. These people were writing a great game, but they were
+doing so _just for fun_, and this has unfortunely made the source code difficult
+to nagivate and even more difficult to understand. It's also currently not
+possible to compile the game on Windows or macOS.
 
-## Personal projects
-Personal projects by myself and others may be found on branches and/or forks. These will not be merged into the master branch without the official blessing of David Grabiner (see http://www.remarque.org/~grabiner/moria.html or http://www-math.bgsu.edu/~grabine/moria.html), the official UMoria maintainer.
+This project is an attempt _clean up_ this decades old codebase; standardising
+the coding style, and refactoring to be as platform independent as possible.
 
-Binaries for personal projects may be released here, however.
 
-## License Information
-The source code to versions 5.5.2 and older is licensed under a combination of GPLv2 and Public Domain, per the Free Moria project (http://free-moria.sourceforge.net/).
+## Umoria Restoration / Development
 
-David Grabiner's 5.6 changes have been released under the GPLv3.
+Umoria has support for many different platforms which include; Linux, MS DOS,
+"Classic" Mac OS (pre OS X), Amiga, and Atari ST. Back in the late 1980's and
+early 1990's, all these were still useful systems to support.
 
-## Background
-I have a long-standing interest in UMoria. It was my first roguelike, and I eventually produced the DJGPP 32-bit DOS port, which has stood as the last official PC release. Later, I participated in the Free Moria project, and ever since then I've toyed with the idea of playing with the source code once in a while. I've finally decided to at least start this project to get the official source code history onto Github, and in parallel I've produced a Cygwin port of the Unix source for use on modern Windows PCs.
+Now, in the 2010's, only Linux is still a viable option - that means there is
+no suport for Windows or macOS. However, most people these days are running on
+Windows or macOS computers!
+
+What to do about it?
+
+With all those old systems no longer useful to anyone but the most dedicated
+nerd, there is no point in clogging up the codebase with support for them.
+That means we start work on removing all related code from the game sources.
+This will clean up the source code considerably, making it much easier to
+then implement proper Windows and macOS support.
+
+Outline of the restoration goals:
+
+  * Format source code using `clang-tidy` and `clang-format`.
+  * Remove support for ancient computers/OS: DOS, Amiga, Atari ST, etc.
+  * Compile against the C11 standard.
+  * Update the code to to be as platform independent as possible.
+    E.g. use _standard types_, such as changing `long` types to `int32`.
+  * Add Windows and macOS support.
+
+
+## Historial Documents and Information
+
+All the old docs and changelog have been moved to the [historical](historical/)
+directory. This folder contains various documents from the original release,
+such as the game manual, FAQ, and even a CHANGELOG of all the changes made
+between version 4.81 and 5.5.2 (1987-2008).
+
